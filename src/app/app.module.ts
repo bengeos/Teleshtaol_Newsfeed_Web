@@ -20,6 +20,8 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -30,7 +32,7 @@ import {
   AppBreadcrumbModule,
   AppHeaderModule,
   AppFooterModule,
-  AppSidebarModule,
+  AppSidebarModule
 } from '@coreui/angular';
 
 // Import routing module
@@ -55,7 +57,9 @@ import { AuthlayoutComponent } from './containers/authlayout/authlayout.componen
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    FormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,

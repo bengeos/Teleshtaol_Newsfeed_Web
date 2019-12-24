@@ -4,8 +4,9 @@ import { ManageEngagementComponent } from './manage/manage-engagement/manage-eng
 import { RoleAndPermissionComponent } from './manage/role-and-permission/role-and-permission.component';
 import { SendnotificationComponent } from './notify/sendnotification/sendnotification.component';
 import { NewslistComponent } from './news/newslist/newslist.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewspostComponent } from './news/newspost/newspost.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 const routes: Routes = [
