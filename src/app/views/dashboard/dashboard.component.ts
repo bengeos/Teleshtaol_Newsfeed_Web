@@ -1,13 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { DashboardService } from '../../services/dashboard.service';
+import { MainDashboard } from './dashboard.object';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
-
+  public main_dashboard_data = new MainDashboard();
   radioModel: string = 'Month';
+  public total = ''; 
+  constructor(private dashboardService:DashboardService) { }
+  
+  ngOnInit(): void {
+    this.UpdateDashboardComponent();
+
+    this.dashboardService.MainDashboardDataEmitter.subscribe(
+      data => {
+          this.main_dashboard_data = data; 
+          //console.log('Main dashboard', data);
+      } 
+  );
+    for (let i = 0; i <= this.mainChartElements; i++) {
+      this.mainChartData1.push(this.random(50, 200));
+      this.mainChartData2.push(this.random(80, 100));
+      this.mainChartData3.push(65);
+    }
+    
+  }
+  public UpdateDashboardComponent(){
+    this.dashboardService.getmainDashboard();
+  }
+  public  setData(data){
+    this.main_dashboard_data=data;
+  }
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -376,13 +403,6 @@ export class DashboardComponent implements OnInit {
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-
-  ngOnInit(): void {
-    // generate random values for mainChart
-    for (let i = 0; i <= this.mainChartElements; i++) {
-      this.mainChartData1.push(this.random(50, 200));
-      this.mainChartData2.push(this.random(80, 100));
-      this.mainChartData3.push(65);
-    }
-  }
+  
+  
 }

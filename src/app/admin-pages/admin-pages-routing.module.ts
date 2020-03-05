@@ -5,12 +5,16 @@ import { RoleAndPermissionComponent } from './manage/role-and-permission/role-an
 import { SendnotificationComponent } from './notify/sendnotification/sendnotification.component';
 import { NewslistComponent } from './news/newslist/newslist.component';
 import { NewspostComponent } from './news/newspost/newspost.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { RoleDetailComponent } from './manage/role-detail/role-detail.component';
+import { RoleGuard } from '../guards/role.guard';
+import { RightGuard } from '../guards/right.guard';
+import { DashboardComponent } from '../views/dashboard/dashboard.component';
+import { ApprovedNewsComponent } from './news/approved-news/approved-news.component';
+import { DispprovedNewsComponent } from './news/dispproved-news/dispproved-news.component';
 
 
 
-const routes: Routes = [
-  {
+const routes: Routes = [{
     path: '',
     data: {
       title: 'Home'
@@ -18,7 +22,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'dashboard'
+        redirectTo: 'newspost'
       },
   {
   path: 'newspost', component: NewspostComponent,
@@ -27,13 +31,22 @@ const routes: Routes = [
   }
 },
 {
-  path: 'dashboard', component: DashboardComponent,
+  path: 'newslist', component: NewslistComponent,
+  canActivate:[RightGuard],
   data: {
-    title: 'DashBoard'
+    title: 'News List'
   }
 },
 {
-  path: 'newslist', component: NewslistComponent,
+  path: 'approvednews', component: ApprovedNewsComponent,
+  canActivate:[RightGuard],
+  data: {
+    title: 'News List'
+  }
+},
+{
+  path: 'disprovednews', component: DispprovedNewsComponent,
+  canActivate:[RightGuard],
   data: {
     title: 'News List'
   }
@@ -52,14 +65,20 @@ const routes: Routes = [
 },
 {
   path: 'roleandpermission', component: RoleAndPermissionComponent,
+  canActivate:[RoleGuard],
   data: {
-    title: 'Send Notification'
+    title: 'Users Role Management'
   }
 },
-
+{
+  path: 'roledetail/:id', component: RoleDetailComponent,
+  canActivate:[RoleGuard],
+  data: {
+    title: 'User Role Detail'
+  }
+},
 ]
-}
-];
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

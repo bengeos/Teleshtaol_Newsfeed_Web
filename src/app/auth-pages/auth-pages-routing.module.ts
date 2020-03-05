@@ -5,19 +5,21 @@ import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
-  { 
-    path:'',
-    children : [{
-    path: 'login',
-     component: LoginComponent,
-    }]  
-  },
-  { 
-    path:'',
-    children : [{
-    path: 'register',
-     component: RegisterComponent,
-    }]  
+  {  
+      path: '',
+      redirectTo: 'login'
+    },
+{
+path: 'login', component: LoginComponent,
+data: {
+  title: 'login'
+}
+},
+{
+path: 'register', component: RegisterComponent,
+data: {
+  title: 'register'
+}
   },
 ];
 

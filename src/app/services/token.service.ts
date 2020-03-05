@@ -8,7 +8,6 @@ export class TokenService {
     login: 'http://localhost:8000/api/login',
     signup: 'http://localhost:8000/api/signup'
   };
-
   constructor() { }
   handle(token){
     this.set(token);

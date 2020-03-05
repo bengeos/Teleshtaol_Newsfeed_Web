@@ -9,6 +9,7 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 
 import { AuthlayoutComponent } from './containers/authlayout/authlayout.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
@@ -33,6 +34,7 @@ export const routes: Routes = [
 {
   path: '',
   component: DefaultLayoutComponent,
+  //canActivate:[AuthGuard],  
   children: [{
       path: 'admin',
       data: {    
@@ -42,6 +44,7 @@ export const routes: Routes = [
       
   }],
 },
+
 {
   path: 'login',
   component: LoginComponent,
@@ -49,13 +52,6 @@ export const routes: Routes = [
     title: 'Login Page'
   }
 },
-//{
- // path: 'register',
- // component: RegisterComponent,
- // data: {
-   // title: 'Register Page'
- // }
-//},
 {
 path: '',
 component: DefaultLayoutComponent,

@@ -3,7 +3,7 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] = [
   {
     name: 'Dashboard',
-    url: '/admin/dashboard',
+    url: '/dashboard',
     icon: 'icon-speedometer',
     badge: {
       variant: 'info',
@@ -27,16 +27,16 @@ export const navItems: INavData[] = [
   {
     name: 'News List Types',
     url: '/notifications',
-    icon: 'icon-bell',
+    icon: 'icon-list',
     children: [
       {
         name: 'Approved News',
-        url: '/admin/newslist',
+        url: '/admin/approvednews',
         icon: 'icon-bell'
       },
       {
         name: 'Disproved News',
-        url: '/admin/newslist',
+        url: '/admin/disprovednews',
         icon: 'icon-bell'
       },
     ]
@@ -54,15 +54,15 @@ export const navItems: INavData[] = [
     title: true,
     name: 'Manage'
   },
-  {
-    name: 'Manage Engagement',
+  /* {
+    name: 'Request Role',
     url: '/admin/manageengagement',
-    icon: 'icon-bell'
-  },
+    icon: 'icon-puzzle'
+  }, */
   {
-    name: 'Role and Permission',
+    name: 'Role Management',
     url: '/admin/roleandpermission',
-    icon: 'icon-bell'
+    icon: 'icon-calculator'
   },
   
   

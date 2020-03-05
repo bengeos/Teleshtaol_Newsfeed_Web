@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -32,7 +32,8 @@ import {
   AppBreadcrumbModule,
   AppHeaderModule,
   AppFooterModule,
-  AppSidebarModule
+  AppSidebarModule,
+  
 } from '@coreui/angular';
 
 // Import routing module
@@ -43,6 +44,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { AuthlayoutComponent } from './containers/authlayout/authlayout.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { HttpModule } from '@angular/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   imports: [
@@ -59,7 +65,13 @@ import { AuthlayoutComponent } from './containers/authlayout/authlayout.componen
     TabsModule.forRoot(),
     ChartsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SweetAlert2Module.forRoot(),
+    SweetAlert2Module,
+    SweetAlert2Module.forChild({ /* options */ }),
+    HttpModule,
+    CommonModule,
+    ModalModule.forRoot()
   ],
   declarations: [
     AppComponent,

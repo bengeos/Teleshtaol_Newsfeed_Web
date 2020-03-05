@@ -1,0 +1,89 @@
+<!-- <div *ngIf="user"> -->
+  <!-- <h2>{{user.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{user.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="user.name" placeholder="name"/>
+      </label>
+    </div>
+    <button (click)="goBack()">Back</button> -->
+  <!--  <form (ngSubmit)="onSet1(d)" #d="ngForm" enctype="multipart/form-data" method="post">
+    <div class="form-group row">
+      <label class="col-md-3 col-form-label">Checkboxes</label>
+
+      <div class="col-md-9 col-form-label">
+        <div class="form-check" *ngFor="let role of roles">
+          <input class="form-check-input" type="checkbox" #art="ngModel" value="{{role.name}}" name="checkbox1"
+            [(ngModel)]="checkbox1" id="checkbox1" />
+          <label class="form-check-label" for="checkbox1">
+            {{role.name}}
+          </label>
+        </div>
+
+      </div>
+    </div>
+    <button type="submit" class="btn btn-sm btn-primary"> Assign</button>
+  </form>
+</div> -->
+
+
+  <!-- <div class="col-md-4"> -->
+    <div class="card">
+      <div class="card-header">
+        <strong>Role</strong> Assign
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" enctype="multipart/form-data" method="post">
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="email">Email</label>
+            <div class="col-md-9">
+              <input autocomplete="email" class="form-control" id="email" [(ngModel)]="selected_user_data.email" name="email"
+                placeholder="Enter Email.." type="email">
+              <!-- <span class="help-block">Please enter your email</span> -->
+            </div>
+          </div>
+
+          <!-- <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="role">Role</label>
+            <div class="col-md-9">
+              <select class="form-control" id="role" name="role" placeholder="Insert Role" [(ngModel)]="role" required>
+
+                <option *ngFor="let role of roles" value="{{role.name}}">{{role.name}}</option>
+              </select>
+            </div>
+          </div> -->
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Role</label>
+            <div class="col-md-9 col-form-label">
+              <div class="form-check">
+                <input checked="" class="form-check-input" id="role" [(ngModel)]="selected_user_data.radio1" name="role" type="radio"
+                  value="admin">
+                <label class="form-check-label" for="role">
+                  Admin
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" id="role" [(ngModel)]="radio2" name="role" type="radio"
+                  value="news-manager">
+                <label class="form-check-label" for="radio2">
+                  News Manager
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" id="radio3" [(ngModel)]="radio3" name="role" type="radio"
+                  value="author">
+                <label class="form-check-label" for="radio3">
+                  Author
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+            <!-- <button class="btn btn-sm btn-danger" (click)="goBack()"> Back</button> -->
+          </div>
+
+        </form>
+      </div>
+    </div>
+  <!-- </div> -->
