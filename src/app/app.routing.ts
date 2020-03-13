@@ -34,7 +34,7 @@ export const routes: Routes = [
 {
   path: '',
   component: DefaultLayoutComponent,
-  //canActivate:[AuthGuard],  
+  canActivate:[AuthGuard],  
   children: [{
       path: 'admin',
       data: {    
@@ -73,6 +73,7 @@ children: [
   },
   {
     path: 'dashboard',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {

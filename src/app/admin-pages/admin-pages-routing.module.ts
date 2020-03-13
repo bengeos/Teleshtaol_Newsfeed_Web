@@ -8,9 +8,10 @@ import { NewspostComponent } from './news/newspost/newspost.component';
 import { RoleDetailComponent } from './manage/role-detail/role-detail.component';
 import { RoleGuard } from '../guards/role.guard';
 import { RightGuard } from '../guards/right.guard';
-import { DashboardComponent } from '../views/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { ApprovedNewsComponent } from './news/approved-news/approved-news.component';
 import { DispprovedNewsComponent } from './news/dispproved-news/dispproved-news.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 
 
@@ -39,14 +40,14 @@ const routes: Routes = [{
 },
 {
   path: 'approvednews', component: ApprovedNewsComponent,
-  canActivate:[RightGuard],
+  //canActivate:[RightGuard],
   data: {
     title: 'News List'
   }
 },
 {
   path: 'disprovednews', component: DispprovedNewsComponent,
-  canActivate:[RightGuard],
+  //canActivate:[RightGuard],
   data: {
     title: 'News List'
   }
@@ -71,8 +72,15 @@ const routes: Routes = [{
   }
 },
 {
-  path: 'roledetail/:id', component: RoleDetailComponent,
+  path: 'roledetail', component: RoleDetailComponent,
   canActivate:[RoleGuard],
+  data: {
+    title: 'Users Role Management'
+  }
+},
+{
+  path: 'dashboard', component: DashboardComponent,
+  canActivate:[AuthGuard],
   data: {
     title: 'User Role Detail'
   }

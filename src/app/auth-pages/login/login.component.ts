@@ -39,8 +39,8 @@ export class LoginComponent implements OnInit {
   handleResponse(data){
     this.Token.handle(data.access_token);
     this.setUserRoleID(data.user_role_id[0].id);
-    console.log(data.user_role_id[0].id);
-    console.log(data.user_role_id[0].name);
+    //console.log(data.user_role_id[0].id);
+    //console.log(data.user_role_id[0].name);
     this.router.navigateByUrl('admin');
   }
   handleError(error){

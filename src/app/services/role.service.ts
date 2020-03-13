@@ -17,13 +17,13 @@ export class RoleService {
     const formData: FormData = new FormData();
     formData.append('email',user_data.email);
     formData.append('role',role);
-    return this.http.post('http://localhost:8000/api/attachrole/'+user_data.id,formData,
+    return this.httpService.sendPostRequest('api/attachrole/' + user_data.id,formData,
     {headers:new_header}
     ).map(
       response => response.json());
   }
   deleteuser(user_data:UserObject){
-    return this.httpService.sendDeleteRequest('api/news_post/'+user_data.id);
+    return this.httpService.sendDeleteRequest('api/userdelete/'+user_data.id);
 
   }
   

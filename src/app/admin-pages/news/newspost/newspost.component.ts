@@ -56,5 +56,6 @@ export class NewspostComponent implements OnInit {
       } 
     );
     
+    
   }
 }

@@ -55,7 +55,7 @@ export class NewsListDialogComponent implements OnInit {
     const formData: FormData = new FormData();
     this.selected_news_data.image_file = this.file_upload_event[0];
     this.selected_news_data.image_file_name = this.file_upload_event[0].name;
-    console.log(this.selected_news_data.approval);
+    
      this.newService.newsedit(this.selected_news_data).subscribe(
        data=>{
         Swal.fire({

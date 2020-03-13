@@ -22,10 +22,8 @@ import { RoleService } from '../../../services/role.service';
 
 export class RoleAndPermissionComponent implements OnInit {
   public user_data=new UserObject();
-  //public new_news = new NewsObject();
   modalRef: BsModalRef;
   users:User[];
-  // roles:Role[];
   constructor(private userService:UserService,private modalService: BsModalService,
     public dialog: MatDialog,public roleService:RoleService) { }
 
@@ -33,16 +31,9 @@ export class RoleAndPermissionComponent implements OnInit {
     this.onGetUsers();
   }
   onGetUsers(){
-    /* console.log('Heyyy'); */
-    
     this.userService.getUsers().subscribe(
-      /* data => {this.user_data = data;
-        (users:User[])=>this.users=users;
-      }, */
       (users:User[])=>this.users=users,
-      
       (error:Response)=>console.log(error),
-      
     );
     console.log(this.users);
   }
@@ -55,17 +46,11 @@ export class RoleAndPermissionComponent implements OnInit {
     const dialogRef = this.dialog.open(RoleDetailComponent, dialogConfig);
   }
 
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
-    this.userService.getUsers().subscribe(
-      (users:User[])=>this.users=users,
-      (error:Response)=>console.log(error)
-    )
-  }
+
   Delete(user_data: UserObject){
     console.log(this.user_data.id);
     Swal.fire({
-      title: 'Are you sure?',
+      title: 'Are you sure to Delete?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,

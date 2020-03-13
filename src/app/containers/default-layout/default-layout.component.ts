@@ -18,6 +18,5 @@ export class DefaultLayoutComponent {
   }
   public logOut () {
     this.authService.logOut();
-  console.log('clicked');
   }
 }

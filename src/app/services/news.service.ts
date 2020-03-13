@@ -32,14 +32,14 @@ getnews() :Observable<any>{
   
 }
 getapproved(){
-  return this.http.sendGetRequest('api/all').map(
+  return this.http.sendGetRequest('api/showapproved').map(
     (response: Response)=>{
         return response.json().news;
     }  
 );
 }
 getdispproved(){
-  return this.http.sendGetRequest('api/all').map(
+  return this.http.sendGetRequest('api/showdispproved').map(
     (response: Response)=>{
         return response.json().news;
     }  
@@ -53,7 +53,7 @@ public newspost(news_data:NewsObject){
       formData.append('content', news_data.content);
       formData.append('video_url', news_data.video_url);
       console.log(formData);
-      return this.http.sendPostRequest('api/news_post?token='+localStorage.getItem('access_token'),formData,new_header); 
+      return this.http.sendPostRequest('api/news_post?token='+localStorage.getItem('token'),formData,new_header); 
   }
   public newsedit(newsedit_data:NewsObject){
     const new_header = new Headers();
@@ -71,8 +71,8 @@ public newspost(news_data:NewsObject){
           formData.append('approval', '0');
       }
 
-        console.log(newsedit_data.id);
-        return this.http.sendPostRequest('api/newspostupdate?token='+localStorage.getItem('access_token'),formData,new_header); 
+       
+        return this.http.sendPostRequest('api/newspostupdate?token='+localStorage.getItem('token'),formData,new_header); 
     }
     public deleteNews(newsdelete_data:NewsObject){
       const new_header = new Headers();

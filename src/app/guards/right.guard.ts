@@ -14,10 +14,10 @@ export class RightGuard implements CanActivate {
   
   canActivate(): boolean {
     if (this.auth.isAdminOrNewm()==true) {
-      console.log('true')
+      console.log('Authorized')
       return true
     } else {
-      console.log('false')
+      console.log('Unauthorized')
       Swal.fire({
         icon: 'error',
         title: 'Oops...',

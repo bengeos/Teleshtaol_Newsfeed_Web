@@ -11,7 +11,7 @@ export class TokenService {
   constructor() { }
   handle(token){
     this.set(token);
-    console.log(this.isValid());
+    //console.log(this.isValid());
   }
   set(token){
     localStorage.setItem('token',token);

@@ -18,10 +18,10 @@ export class AuthGuard implements CanActivate {
   } */
   canActivate():boolean{
     if (this.auth.loggedIn()) {
-      console.log('true')
+      console.log('Authorized')
       return true
     }  else {
-      console.log('false')            
+      console.log('Unauthorized')            
       this.router.navigate(['/'])
       return false
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
 import { Location } from '@angular/common';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../user.interface';
@@ -7,7 +7,7 @@ import { Role } from '../../news/newslist/user.interface';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { RoleService } from '../../../services/role.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NewsObject } from '../../news/news.objects';
 import { UserObject } from '../role-and-permission/user.objects';
 @Component({
@@ -16,37 +16,28 @@ import { UserObject } from '../role-and-permission/user.objects';
   styleUrls: ['./role-detail.component.css']
 })
 export class RoleDetailComponent implements OnInit {
-  users:User[];
-  user:User;
-  roles:Role[];
+  users: User[];
+  user: User;
+  roles: Role[];
   public selected_user_data = new UserObject();
 
   constructor(
     private route: ActivatedRoute,
-    private userService:UserService,
+    private userService: UserService,
     private roleService: RoleService,
     public dialogRef: MatDialogRef<RoleDetailComponent>,
     @Inject(MAT_DIALOG_DATA) selected_user: UserObject) {
-      this.selected_user_data=selected_user;
-     }
-
+    this.selected_user_data = selected_user;
+  }
   ngOnInit() {
-    this.onGetUsers();
-    this.getRoles();
-
   }
-
-  goBack() {
-    
-  }
-
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     console.log(this.selected_user_data.id);
     console.log(this.selected_user_data.email);
     console.log(form.value.role);
     const id = +this.route.snapshot.paramMap.get('id');
-    
-    this.roleService.roleAssign(this.selected_user_data,form.value.role).subscribe(
+
+    this.roleService.roleAssign(this.selected_user_data, form.value.role).subscribe(
       data => {
         Swal.fire({
           position: 'top-end',
@@ -56,35 +47,17 @@ export class RoleDetailComponent implements OnInit {
           timer: 1500
         })
       },
-      error=>{
+      error => {
         console.log('Error');
         Swal.fire({
           position: 'top-end',
           icon: 'error',
           title: 'Oops',
-          text:'Not Assigned',
+          text: 'Not Assigned',
           showConfirmButton: false,
           timer: 1500
         })
-       }
-      );
-     //form.reset();
-
-    //form.resetForm();
+      }
+    );
   }
-  
-  onGetUsers(){
-    const id = +this.route.snapshot.paramMap.get('id'); 
-    this.userService.getUser(id).subscribe(
-      (user=>this.user=user),
-      (error:Response)=>console.log(error)
-    )
-  }
-  getRoles(){
-    this.userService.getRoles().subscribe(
-      (roles:Role[])=>this.roles=roles,
-      (error:Response)=>console.log(error)
-    )
-  }
-
 }

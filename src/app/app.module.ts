@@ -48,6 +48,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CommonModule } from '@angular/common';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { CommonModule } from '@angular/common';
     SweetAlert2Module.forChild({ /* options */ }),
     HttpModule,
     CommonModule,
+    MatTooltipModule,
     ModalModule.forRoot()
   ],
   declarations: [

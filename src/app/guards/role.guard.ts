@@ -14,10 +14,10 @@ export class RoleGuard implements CanActivate {
     
   canActivate(): boolean {
     if (this.auth.isAdmin()==true) {
-      console.log('true')
+      console.log('Authorized')
       return true
     } else {
-      console.log('false')
+      console.log('Unauthorized')
       Swal.fire({
         icon: 'error',
         title: 'Oops...',

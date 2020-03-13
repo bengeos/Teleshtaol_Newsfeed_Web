@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminPagesRoutingModule } from './admin-pages-routing.module';
-//import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManageEngagementComponent } from './manage/manage-engagement/manage-engagement.component';
 import { NewspostComponent } from './news/newspost/newspost.component';
 import { NewslistComponent } from './news/newslist/newslist.component';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { RoleDetailComponent } from './manage/role-detail/role-detail.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { DashboardComponent } from '../views/dashboard/dashboard.component';
+//import { DashboardComponent } from '../views/dashboard/dashboard.component';
 import { ChartsModule } from 'ng2-charts';
 //import { TabsModule } from 'ngx-bootstrap/tabs/public_api';
 //import { BsDropdownModule } from 'ngx-bootstrap/dropdown/public_api';
@@ -62,7 +62,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
-  declarations: [ ManageEngagementComponent, NewspostComponent, NewslistComponent, RoleAndPermissionComponent, SendnotificationComponent, RoleDetailComponent, ApprovedNewsComponent, DispprovedNewsComponent, NewsListDialogComponent],
+  declarations: [ ManageEngagementComponent, NewspostComponent, NewslistComponent, RoleAndPermissionComponent, SendnotificationComponent,DashboardComponent, RoleDetailComponent, ApprovedNewsComponent, DispprovedNewsComponent, NewsListDialogComponent],
   entryComponents: [NewsListDialogComponent],
   imports: [
     CommonModule,    
