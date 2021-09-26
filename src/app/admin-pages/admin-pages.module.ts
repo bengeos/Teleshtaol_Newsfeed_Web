@@ -21,7 +21,6 @@ import { AppBreadcrumbModule } from '@coreui/angular';
 import { ApprovedNewsComponent } from './news/approved-news/approved-news.component';
 import { DispprovedNewsComponent } from './news/dispproved-news/dispproved-news.component';
 import { Component } from '@angular/core';
-//import { NewspostdialogComponent } from './Roger/newspostdialog/newspostdialog.component';
 import { NewsListDialogComponent } from './news/news-list-dialog/news-list-dialog.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -58,11 +57,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommerceComponent } from './commerce/commerce/commerce.component';
 
 
 
 @NgModule({
-  declarations: [ ManageEngagementComponent, NewspostComponent, NewslistComponent, RoleAndPermissionComponent, SendnotificationComponent,DashboardComponent, RoleDetailComponent, ApprovedNewsComponent, DispprovedNewsComponent, NewsListDialogComponent],
+  declarations: [ ManageEngagementComponent, NewspostComponent, NewslistComponent, RoleAndPermissionComponent, SendnotificationComponent,DashboardComponent, RoleDetailComponent, ApprovedNewsComponent, DispprovedNewsComponent, NewsListDialogComponent, CommerceComponent],
   entryComponents: [NewsListDialogComponent],
   imports: [
     CommonModule,    

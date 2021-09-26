@@ -49,6 +49,7 @@ import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CommonModule } from '@angular/common';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ClientLayoutComponent } from './containers/client-layout/client-layout/client-layout.component';
 
 
 @NgModule({
@@ -82,7 +83,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     P500Component,
     LoginComponent,
     RegisterComponent,
-    AuthlayoutComponent
+    AuthlayoutComponent,
+    ClientLayoutComponent
   ],
   providers: [{
     provide: LocationStrategy,

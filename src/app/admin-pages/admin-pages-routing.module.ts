@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ApprovedNewsComponent } from './news/approved-news/approved-news.component';
 import { DispprovedNewsComponent } from './news/dispproved-news/dispproved-news.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { CommerceComponent } from './commerce/commerce/commerce.component';
 
 
 
@@ -24,6 +25,12 @@ const routes: Routes = [{
       {
         path: '',
         redirectTo: 'newspost'
+      },
+      {
+        path: 'test', component: CommerceComponent,
+        data: {
+          title: 'Test new'
+        }
       },
   {
   path: 'newspost', component: NewspostComponent,
@@ -40,14 +47,14 @@ const routes: Routes = [{
 },
 {
   path: 'approvednews', component: ApprovedNewsComponent,
-  //canActivate:[RightGuard],
+  canActivate:[RightGuard],
   data: {
     title: 'News List'
   }
 },
 {
   path: 'disprovednews', component: DispprovedNewsComponent,
-  //canActivate:[RightGuard],
+  canActivate:[RightGuard],
   data: {
     title: 'News List'
   }

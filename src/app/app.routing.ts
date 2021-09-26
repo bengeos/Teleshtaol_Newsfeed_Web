@@ -10,6 +10,7 @@ import { LoginComponent } from './views/login/login.component';
 
 import { AuthlayoutComponent } from './containers/authlayout/authlayout.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ClientLayoutComponent } from './containers/client-layout/client-layout/client-layout.component';
 
 
 
@@ -44,6 +45,18 @@ export const routes: Routes = [
       
   }],
 },
+{
+  path: '',
+  component: ClientLayoutComponent,
+  children: [{
+      path: 'client',
+      data: {    
+        title: 'Client'
+      },
+      loadChildren: () => import('./client-pages/client-pages.module').then(m => m.ClientPagesModule),
+      
+  }],
+},
 
 {
   path: 'login',
@@ -73,7 +86,7 @@ children: [
   },
   {
     path: 'dashboard',
-    canActivate:[AuthGuard],
+    //canActivate:[AuthGuard],
     loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
