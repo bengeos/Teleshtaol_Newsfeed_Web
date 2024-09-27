@@ -1,0 +1,92 @@
+<!-- <p>role and permission works!</p> -->
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Users</div>
+
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scrope="col">#</th>
+                <th scrope="col">Name</th>
+                <th scrope="col">Email</th>
+                <th scrope="col">Role</th>
+                <th scrope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <!-- <th scrope="row">{{user.id}}</th> -->
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.roles[0].name}}</td>
+                <td>
+                  <button mat-raised-button type="button" matTooltip="Update User" [matTooltipPosition]="'above'"
+                    (click)="Edit(user)" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                    <i class="material-icons">edit</i>
+                  </button>
+                  <button mat-raised-button type="button" matTooltip="Remove User" [matTooltipPosition]="'above'"
+                    (click)="Delete(user)" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                    <i class="material-icons">close</i>
+                  </button>
+
+                  <!-- <button type="button" class="btn btn-primary" (click)="Edit(user)">Edit</button>
+                  <button type="submit" class="btn btn-warning float-right" (click)="Delete(user)">Delete</button> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Users</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="onupdate(edit)" #edit="ngForm" enctype="multipart/form-data" method="post">
+      <div class="row">
+        <label class="col-sm-7"></label>
+        <div class="form-group col-sm-11">
+          <label for="vat">Title</label>
+          <input type="text" class="form-control" #art="ngModel" id="title" placeholder="title" [(ngModel)]="title"
+            name="title" required>
+          <label for="vat">Content</label>
+          <input id="textarea-input" type="text" class="form-control" #art="ngModel" id="body"
+            placeholder="write content" [(ngModel)]="body" name="body" required>
+          <label for="vat">Approve</label>
+          <div class="col-md-9">
+            <label class="radio-inline" for="inline-radio1">
+              <input type="radio" id="inline-radio1" value="0" class="form-control" #art="ngModel" id="disapproval"
+                [(ngModel)]="disapproval" name="disapproval" required>
+              Disapprove
+            </label>
+            <label class="radio-inline" for="inline-radio2">
+              <input type="radio" id="inline-radio2" value="1" class="form-control" #art="ngModel" id="approval"
+                [(ngModel)]="approval" name="approval" required>
+              Approve
+            </label>
+          </div>
+          <label class="switch switch-3d switch-danger">
+            <input type="checkbox" id="approve" #art="ngModel" class="switch-input" name="approve"
+              [(ngModel)]="approve">
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success pull-left">UPDATE</button>
+    </form>
+  </div>
+</ng-template>

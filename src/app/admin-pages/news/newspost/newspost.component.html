@@ -1,0 +1,49 @@
+<div class="col-sm-6">
+  <div class="card">
+    <div class="card-header">
+      <strong>News Post</strong>
+    </div>
+    <div class="card-body">
+      <form action=""  (ngSubmit)="onSubmit(f)" #f="ngForm" class="inset" style="margin: 10px;">
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input">News Title</label>
+          <div class="col-md-9">
+            <input class="form-control" id="title" #art="ngModel" name="title" placeholder="Title" type="text"
+              [(ngModel)]="new_news.title" required>
+            <span class="help-block">News Title</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="email-input">Video Url</label>
+          <div class="col-md-9">
+            <input class="form-control" #art="ngModel" id="video_url" [(ngModel)]="new_news.video_url" name="video_url"
+              placeholder="Video URL" type="email" required>
+            <span class="help-block">News Youtube Video URL</span>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="textarea-input">Description</label>
+          <div class="col-md-9">
+            <textarea class="form-control" id="content" #art="ngModel" name="content" placeholder="News Description.."
+              rows="9" [(ngModel)]="new_news.content" required></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="file-input">Image</label>
+          <div class="col-md-9">
+            <input class="form-control" placeholder="enter group name" type="file" name="image_file" id="image_file"
+              (change)="fileUploadEvent($event)" required>
+          </div>
+          <div class="valid-feedback">
+            Input is valid.
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-sm btn-primary" (click)="onSubmit();" [disabled] ="!f.valid">
+            Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

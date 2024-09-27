@@ -1,13 +1,67 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { DashboardService } from '../../services/dashboard.service';
+import { MainDashboard,PostDashboard,ChartObject,DashboardListData} from './dashboard.object';
+import * as Chartist from 'chartist';
+
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
-
+  public bar_chart_chart_object: ChartObject = new ChartObject();
+    public bar_chart: any = null;
+    public bar_chart_option: any = null;
+    public dataRefresher: any;
+  public main_dashboard_data = new MainDashboard();
+  public newspost_data = new PostDashboard();
+  public dashboard_data = new DashboardListData();
   radioModel: string = 'Month';
+  public total = ''; 
+  constructor(private dashboardService:DashboardService) { }
+  
+  ngOnInit(): void {
+    this.UpdateDashboardComponent();
+    this.updateNewsPostDashboard();
+    this.bar_chart_chart_object = new ChartObject();
+    this.dashboardService.MainDashboardDataEmitter.subscribe(
+      data => {
+        this.main_dashboard_data = data;
+      },
+    );
+      this.dashboardService.PostDashboardDataEmitter.subscribe(
+        data => {
+          this.newspost_data = data;
+        } 
+        );
+        this.dashboardService.DashboardUsersDailyDataEmitter.subscribe(
+          data => {this.dashboard_data = data; this.updateChartData(); console.log('daly_users', data); }
+      );
+    for (let i = 0; i <= this.mainChartElements; i++) {
+      this.mainChartData1.push(this.random(50, 200));
+      this.mainChartData2.push(this.random(80, 100));
+      this.mainChartData3.push(65);
+    }
+    
+  }
+  public updateChartData() {
+    console.log('update CHART', this.dashboard_data);
+    this.bar_chart_chart_object.series = [this.dashboard_data.users_count];
+    this.bar_chart_chart_object.labels = this.dashboard_data.member_date;
+    this.bar_chart_option.high = Math.max.apply(Math, this.dashboard_data.users_count);
+    this.bar_chart = new Chartist.Bar('#bar_chart', this.bar_chart_chart_object, this.bar_chart_option);
+}
+  public UpdateDashboardComponent(){
+    this.dashboardService.getmainDashboard();
+    
+  }
+  public updateNewsPostDashboard(){
+    this.dashboardService.getPostDashbord();
+  }
+  public  setData(data){
+    this.main_dashboard_data=data;
+  }
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -376,13 +430,7 @@ export class DashboardComponent implements OnInit {
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-
-  ngOnInit(): void {
-    // generate random values for mainChart
-    for (let i = 0; i <= this.mainChartElements; i++) {
-      this.mainChartData1.push(this.random(50, 200));
-      this.mainChartData2.push(this.random(80, 100));
-      this.mainChartData3.push(65);
-    }
-  }
+  
+  
+  
 }

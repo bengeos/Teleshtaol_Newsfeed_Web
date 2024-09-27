@@ -1,0 +1,52 @@
+<mat-toolbar>
+  <span class="fill-remaining-space">News Edit</span>
+</mat-toolbar>
+<form  (ngSubmit)="onSubmit(f)" #f=ngForm  action="" class="inset" style="margin: 10px;">
+  <div class="form-group row">
+    <label class="col-md-3 col-form-label" for="text-input">News Title</label>
+    <div class="col-md-9">
+      <input class="form-control" id="title" #art="ngModel" name="title" placeholder="Title" type="text"
+        [(ngModel)]="selected_news_data.title" required>
+      <span class="help-block">News Title</span>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-3 col-form-label" for="email-input">Video Url</label>
+    <div class="col-md-9">
+      <input class="form-control" #art="ngModel" id="video_url" [(ngModel)]="selected_news_data.video_url"
+        name="video_url" placeholder="Video URL" type="email" required>
+      <span class="help-block">News Youtube Video URL</span>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-3 col-form-label" for="textarea-input">Description</label>
+    <div class="col-md-9">
+      <textarea class="form-control" id="content" #art="ngModel" name="content" placeholder="News Description.."
+        rows="9" [(ngModel)]="selected_news_data.content" required></textarea>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-3 col-form-label" for="file-input">Image</label>
+    <div class="col-md-9">
+      <input class="form-control" placeholder="enter group name" type="file" name="image_file" id="image_file"
+        (change)="fileUploadEvent($event)" required>
+      <!-- <input class="form-control" placeholder="enter group name" ngModel value="image_file" type="file" name="selected_file" id="selected_file_id_2" (change)="fileUploadEvent($event)"> -->
+    </div>
+
+
+    <div class="valid-feedback">
+      Input is valid.
+    </div>
+  </div>
+  <div class="form-group row">
+    <div>
+      Approval
+    </div>&nbsp;&nbsp;&nbsp;
+    <label class="switch switch-pill switch-primary">
+      <input type="checkbox" class="switch-input" checked value="0" [(ngModel)]="selected_news_data.approval"
+        [ngModelOptions]="{standalone: true}">
+      <span class="switch-slider"></span>
+    </label>
+  </div>
+  <button type="button" class="btn btn-sm btn-primary"  (click)="onSubmit();" [disabled]="!f.valid">Submit</button>
+</form>
